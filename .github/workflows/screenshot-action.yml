@@ -14,11 +14,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Termshot
-        uses: jaxxstorm/action-install-gh-release@v1.10.0
-        with:
-          repo: homeport/termshot
-          asset: termshot_0.2.7_linux_amd64
+      # - name: Setup Termshot
+      #   uses: jaxxstorm/action-install-gh-release@v1.10.0
+      #   with:
+      #     repo: homeport/termshot
+      #     asset: termshot_0.2.7_linux_amd64
 
       - name: Run General Commands
         run: |
