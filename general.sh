@@ -6,7 +6,7 @@ mkdir -p gen-output
 
 exec &> script.log 2>&1
 
-device=$(lsblk -l | grep -E 'disk' | awk '{print $1}' | head -n 1)
+
 
 # List of commands
 hw_commands=(
@@ -16,10 +16,6 @@ hw_commands=(
     "lshw"
     "lspci -tv"
     "lsusb -tv"
-    "dmidecode"
-    "hdparm -i /dev/$device"
-    "hdparm -tT /dev/$device"
-    "badblocks -s /dev/$device"
     "ps"
     "pstree"
     "psmap"
