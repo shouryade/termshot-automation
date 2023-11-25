@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-mkdir -p priv-output
+mkdir -p outputs/priv-output
 exec &> script.log 2>&1
 
 counter=1
@@ -25,7 +25,7 @@ admin_actions=(
 )
 
 for cmd in "${admin_actions[@]}"; do
-    filename="priv-output/${counter}"
+    filename="outputs/priv-output/${counter}"
 
     echo "Running: $cmd"
 

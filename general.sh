@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-mkdir -p gen-output
+mkdir -p outputs/gen-output
 
 exec &> script.log 2>&1
 
@@ -58,7 +58,7 @@ hw_commands=(
 
 counter=1
 for cmd in "${hw_commands[@]}"; do
-    filename="gen-output/${counter}"
+    filename="outputs/gen-output/${counter}"
 
     echo "Running: $cmd"
 

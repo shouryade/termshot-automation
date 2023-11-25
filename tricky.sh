@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-mkdir -p tricky-output
+mkdir -p outputs/tricky-output
 exec &> script.log 2>&1
 
 counter=1
@@ -22,7 +22,7 @@ sleep 1
 ./termshot -f "$filename.png" --show-cmd -- "tail -n 2 script.log"
 ((counter++))
 
-filename="tricky-output/${counter}"
+filename="outputs/tricky-output/${counter}"
 exec -a DummyProcess sleep 100000 &
 # pgrep -fl DummyProcess
 echo -e "\e[1;31mkillall sleep\e[0m"
