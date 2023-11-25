@@ -10,9 +10,6 @@ permissions:
 jobs:
   screenshot-images:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./termshot-automation
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -34,4 +31,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: outputs
-          path: termshot-automation/outputs
+          path: ./outputs
