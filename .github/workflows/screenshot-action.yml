@@ -13,12 +13,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Run General Commands
+      - name: run-general
         run: |
           echo "Running general commands first!"
           chmod +x general.sh
           sudo ./general.sh
-          ls -lah outputs/gen-output/
+
+      - name: run-privileged
+        run: |
+          echo "Running privileged queries!"
+          chmod +x privileged.sh
+          sudo ./privileged.sh
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
