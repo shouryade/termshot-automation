@@ -6,6 +6,7 @@ mkdir -p outputs/tricky-output
 echo "here"
 exec &> script.log 2>&1
 
+
 counter=1
 
 filename="outputs/tricky-output/${counter}"
@@ -33,3 +34,4 @@ killall -9 sleep
 # cleaning up in case one of the above commands failed
 pkill -9 -f DummyProcess
 
+exit 0
