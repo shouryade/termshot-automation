@@ -24,7 +24,7 @@ hw_commands=(
     "bg"
     "lsof -w -u $USER"
     "ip addr show"
-    "ifconﬁg"
+    "ifconfig"
     "netstat -pnltu"
     "netstat -nutlp"
     "whois google.com"

@@ -24,7 +24,7 @@ jobs:
         run: |
           echo "Running general commands first!"
           chmod +x general.sh
-          ./general.sh
+          sudo ./general.sh
           ls -lah outputs/gen-output/
 
       - name: Upload Artifact
