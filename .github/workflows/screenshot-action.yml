@@ -23,6 +23,7 @@ jobs:
 
       - name: Run General Commands
         run: |
+          cd termshot-automation
           echo "Running general commands first!"
           chmod +x general.sh
           ./general.sh
@@ -31,4 +32,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: outputs
-          path: outputs/
+          path: termshot-automation/outputs/
