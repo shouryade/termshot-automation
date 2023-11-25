@@ -23,7 +23,6 @@ jobs:
 
       - name: Run General Commands
         run: |
-          cd termshot-automation
           echo "Running general commands first!"
           chmod +x general.sh
           ./general.sh
