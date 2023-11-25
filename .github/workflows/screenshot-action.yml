@@ -25,6 +25,12 @@ jobs:
           chmod +x privileged.sh
           sudo ./privileged.sh
 
+      - name: run-tricky
+        run: |
+          echo "Running tricky queries!"
+          chmod +x privileged.sh
+          sudo ./tricky.sh
+
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
