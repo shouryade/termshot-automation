@@ -25,7 +25,7 @@ jobs:
           echo "Running general commands first!"
           chmod +x general.sh
           ./general.sh
-          ls -lah outputs
+          ls -lah outputs/gen-output/
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
