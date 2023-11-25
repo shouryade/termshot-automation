@@ -10,6 +10,9 @@ permissions:
 jobs:
   screenshot-images:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./termshot-automation
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -18,7 +21,6 @@ jobs:
         uses: jaxxstorm/action-install-gh-release@v1.10.0
         with:
           repo: homeport/termshot
-          release: v0.2.7
           asset: termshot_0.2.7_linux_amd64
 
       - name: Run General Commands
@@ -32,4 +34,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: outputs
-          path: outputs
+          path: termshot-automation/outputs
