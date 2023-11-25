@@ -96,7 +96,7 @@ file_commands=(
 
 
 for cmd in "${file_commands[@]}"; do
-    filename="gen-output/${counter}"
+    filename="outputs/gen-output/${counter}"
 
     echo "Running: $cmd"
 
@@ -116,7 +116,7 @@ search_commands=(
 )
 
 for cmd in "${search_commands[@]}"; do
-    filename="gen-output/${counter}"
+    filename="outputs/gen-output/${counter}"
 
     echo "Running: $cmd"
 
