@@ -3,6 +3,7 @@
 set -euo pipefail
 
 mkdir -p outputs/tricky-output
+echo "here"
 exec &> script.log 2>&1
 
 counter=1
@@ -16,7 +17,7 @@ pkill -9 -f DummyProcess
 
 filename="outputs/tricky-output/${counter}"
 exec -a DummyProcess sleep 1000000 &
-echo -e "\e[1;31mkill -9 $(pidof DummyProcess)\e[0m"
+echo -e "\e[1;31m kill -9 $(pidof DummyProcess)\e[0m"
 kill -9 "$(pidof DummyProcess)"
 sleep 1
 ./termshot -f "$filename.png" --show-cmd -- "tail -n 2 script.log"

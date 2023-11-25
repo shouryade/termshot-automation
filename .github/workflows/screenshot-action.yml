@@ -30,7 +30,6 @@ jobs:
           echo "Running tricky queries!"
           chmod +x tricky.sh
           sudo ./tricky.sh
-          cat script.log
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
