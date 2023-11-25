@@ -1,0 +1,34 @@
+name: "Screenshot terminal outputs"
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  screenshot-images:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Termshot
+        uses: jaxxstorm/action-install-gh-release@v1.10.0
+        with:
+          repo: homeport/termshot
+          release: v0.2.7
+          asset: termshot_0.2.7_linux_amd64
+
+      - name: Run General Commands
+        run: |
+          echo "Running general commands first!"
+          chmod +x general.sh
+          ./general.sh
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: outputs
+          path: outputs/
