@@ -75,27 +75,27 @@ done
 
 # Array of file commands
 file_commands=(
-    "mkdir my_directory && ls"
-    "echo 'Hello, World!' > my_file.txt && ls"
-    "cp my_file.txt copied_file.txt && ls"
-    "cp -r my_directory copied_directory && ls"
-    "mv my_file.txt renamed_file.txt && ls"
-    "ln -s my_file.txt symbolic_link.txt && ls"
-    "rm copied_file.txt && ls"
-    "rsync -a my_directory backup && ls"
-    "rm -r copied_directory && ls"
-    "rm -rf symbolic_link.txt && ls"
+    "mkdir my_directory && ls -lh"
+    "echo 'Hello, World!' > my_file.txt && ls -lh"
+    "cp my_file.txt copied_file.txt && ls -lh"
+    "cp -r my_directory copied_directory && ls -lh"
+    "mv my_file.txt renamed_file.txt && ls -lh"
+    "ln -s my_file.txt symbolic_link.txt && ls -lh"
+    "rm copied_file.txt && ls -lh"
+    "rsync -a my_directory backup && ls -lh"
+    "rm -r copied_directory && ls -lh"
+    "rm -rf symbolic_link.txt && ls -lh"
     "more renamed_file.txt"
     "head renamed_file.txt"
     "tail renamed_file.txt"
     "wc renamed_file.txt"
     "ls"
     "ls -a"
-    "scp renamed_file.txt backup && ls backup"
-    "tar cf backup.tar backup && ls"
-    "tar xf backup.tar && ls"
-    "tar czf backup.tar.gz backup && ls"
-    "gzip renamed_file.txt && ls"
+    "scp renamed_file.txt backup && ls -lh backup"
+    "tar cf backup.tar backup && ls -lh"
+    "tar xf backup.tar && ls -lh"
+    "tar czf backup.tar.gz backup && ls -lh"
+    "gzip renamed_file.txt && ls -lh"
 )
 
 
@@ -104,7 +104,7 @@ for cmd in "${file_commands[@]}"; do
 
     echo "Running: $cmd"
 
-    ./termshot -f "$filename.png" --show-cmd -- "$cmd | head -n 7" || echo "Error running: $cmd"
+    ./termshot -f "$filename.png" --show-cmd -- "$cmd" || echo "Error running: $cmd"
 
     ((counter++))
 done
