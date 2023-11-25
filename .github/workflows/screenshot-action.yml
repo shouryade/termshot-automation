@@ -26,10 +26,10 @@ jobs:
           echo "Running general commands first!"
           chmod +x general.sh
           ./general.sh
-          ls -lah
+          ls -lah outputs
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
           name: outputs
-          path: termshot-automation/outputs/
+          path: outputs
