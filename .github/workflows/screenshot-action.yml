@@ -1,4 +1,4 @@
-name: "Screenshot terminal outputs"
+name: "terminal-screenshots"
 on:
   push:
     branches:
@@ -25,14 +25,9 @@ jobs:
           chmod +x privileged.sh
           sudo ./privileged.sh
 
-      - name: run-tricky
-        run: |
-          echo "Running tricky queries!"
-          chmod +x tricky.sh
-          sudo ./tricky.sh
-
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
           name: outputs
           path: ./outputs
+          retention-days: 5
