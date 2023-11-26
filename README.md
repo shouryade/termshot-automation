@@ -1,5 +1,9 @@
 # TermShot Automation
 
+Imagine taking multiple screenshots of your terminal output for your assignment. Sounds tedious, doesn't it? Well, it is.
+
+![Well, I am a firm believer of this thought!](https://images.app.goo.gl/A8SQcy74zNe6tRzP6 "Automation is the key to success!")
+
 I created this repository so that I didn't have to manually take screenshots of the terminal output for my Linux Commands assignment. I used [termshot](https://github.com/homeport/termshot) to capture the terminal output in the form of PNG files.
 
 ## Table of Contents
