@@ -3,11 +3,14 @@
 set -euo pipefail
 
 mkdir -p outputs/tricky-output
-echo "here"
 exec &> script.log 2>&1
 
-
 counter=1
+
+filename="outputs/tricky-output/${counter}"
+cmd="ssh -i ~/.ssh/githubssh git@github.com"
+./termshot -f "$filename.png" --show-cmd -- "$cmd"
+((counter++))
 
 filename="outputs/tricky-output/${counter}"
 exec -a DummyProcess sleep 1000000 &
@@ -30,6 +33,7 @@ exec -a DummyProcess sleep 100000 &
 echo -e "\e[1;31mkillall sleep\e[0m"
 killall -9 sleep
 ./termshot -f "$filename.png" --show-cmd -- "tail -n 2 script.log"
+((counter++))
 
 # cleaning up in case one of the above commands failed
 pkill -9 -f DummyProcess
