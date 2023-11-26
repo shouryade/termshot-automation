@@ -58,8 +58,8 @@ Execute the scripts using the following commands:
 ```bash
 chmod +x general.sh
 ./general.sh
-chmod +x priviliged.sh
-sudo ./priviliged.sh
+chmod +x privileged.sh
+sudo ./privileged.sh
 chmod +x tricky.sh
 ./tricky.sh
 ```
