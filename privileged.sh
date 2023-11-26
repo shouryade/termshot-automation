@@ -18,7 +18,7 @@ admin_actions=(
     "hdparm -tT /dev/$device"
     "badblocks -s /dev/$device"
     "groupadd demo && cat /etc/group | grep demo"
-    "adduser user-demo && cat /etc/passwd | grep user-demo"
+    "useradd user-demo && cat /etc/passwd | grep user-demo"
     "usermod -aG demo user-demo && cat /etc/group | grep demo"
     "userdel user-demo && cat /etc/passwd | grep user-demo"
     "groupdel demo && cat /etc/group | grep demo"

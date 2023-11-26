@@ -1,81 +1,44 @@
-# TermSnap
+# termshot
 
-Imagine taking multiple screenshots of your terminal output for your assignment. Sounds tedious, doesn't it? Well, it is.
+[![License](https://img.shields.io/github/license/homeport/termshot.svg)](https://github.com/homeport/termshot/blob/main/LICENSE)
+[![Go Report Card](https://goreportcard.com/badge/github.com/homeport/termshot)](https://goreportcard.com/report/github.com/homeport/termshot)
+[![Tests](https://github.com/homeport/termshot/workflows/Tests/badge.svg)](https://github.com/homeport/termshot/actions?query=workflow%3A%22Tests%22)
+[![Codecov](https://img.shields.io/codecov/c/github/homeport/termshot/main.svg)](https://codecov.io/gh/homeport/termshot)
+[![Go Reference](https://pkg.go.dev/badge/github.com/homeport/termshot.svg)](https://pkg.go.dev/github.com/homeport/termshot)
+[![Release](https://img.shields.io/github/release/homeport/termshot.svg)](https://github.com/homeport/termshot/releases/latest)
 
-![Well, I am a firm believer of this thought!](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBzUn1_rTjBXPDd6N3Y5gA7kCwor_RmVckEYvJbEb8g31XFMSfPstGXxX0eRONul-5jeU&usqp=CAU "Automation is the key to success!")
+Terminal screenshot tool, which takes the console output and renders an output image that resembles a user interface window. The idea is similar to what [carbon.now.sh](https://carbon.now.sh/), [instaco.de](http://instaco.de/), or [codekeep.io/screenshot](https://codekeep.io/screenshot) do. Instead of applying syntax highlight based on a programming language, `termshot` is using the ANSI escape codes of the program output. The result is clean screenshot (or recreation) of your terminal output. If you want, it has an option to edit the program output before creating the screenshot. This way you can remove unwanted sensitive content. Like `time`, `watch`, or `perf`, just place `termshot` before the command and you are set.
 
-I created this repository so that I didn't have to manually take screenshots of the terminal output for my Linux Commands assignment. I used [termshot](https://github.com/homeport/termshot) to capture the terminal output in the form of PNG files.
-
-## Table of Contents
-
-- [Introduction](#introduction)
-- [Features](#features)
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-
-## Introduction
-
-What it does is basically capturing terminal output in the form of screenshots. The scripts execute a series of commands, including process termination commands, and uses termshot to visually represent the changes in the terminal. The scripts are in 3 files namely:
-
-- `general.sh` : For general commands that require no human interaction.
-- `priviliged.sh`: For commands that require root privileges.
-- `tricky.sh`: Process creation and termination commands including `kill`, `killall` and `pkill`.
-
-## Features
-
-- If you don't have a Linux machine, you can just use the `termshot-actions` branch of this repository to run the script on GitHub Actions and download the generated PNG files.
-- Ez to use.
-
-## Requirements
-
-- Bash
-- `termshot` : Download it from [here](https://github.com/homeport/termshot/releases/tag/v0.2.7)
+For example, `termshot --show-cmd -- lolcat -f <(figlet -f big foobar)` will create a screenshot which looks like this: ![example](.docs/images/example.png?raw=true "example screenshot")
 
 ## Installation
 
-1. Clone the repository:
+### macOS
 
-   ```bash
-   git clone https://github.com/shouryade/termshot-automation.git
-   ```
+Use `homebrew` to install `termshot`: `brew install homeport/tap/termshot`
 
-2. Navigate to the project directory:
+### Binaries
 
-   ```bash
-   cd termshot-automation
-   ```
+The [releases](https://github.com/homeport/termshot/releases/) section has pre-compiled binaries for Darwin, and Linux.
 
-3. Ensure that `termshot` is installed. You can find termshot binaries to download for your machine at [termshot GitHub repository](https://github.com/homeport/termshot/releases/tag/v0.2.7).
+## Notes
 
-## Usage
+- Since both `termshot` and your command can have command line flags, it is recommended to use `--` to separate them.
 
-### Usage on your Linux machine
+  ```sh
+  termshot --edit -- tool --apply --force
+  ```
 
-Execute the scripts using the following commands:
+- If you want to run a command and pipe the output into another, you have to use quotes to make this clear on the command line.
 
-```bash
-chmod +x general.sh
-./general.sh
-chmod +x priviliged.sh
-sudo ./priviliged.sh
-chmod +x tricky.sh
-./tricky.sh
-```
+  ```sh
+  termshot --show-cmd -- "figlet foobar | lolcat"
+  ```
 
-### Usage on GitHub Actions
+- In order to work, `termshot` uses a pseudo terminal for the command to be executed. This means you can invoke a fully interactive shell and capture the entire output. The screenshot is created once you terminate the shell.
 
-Fork this repository.  
-Change the branch to `termshot-actions` and follow the steps below:
+  ```sh
+  termshot /bin/zsh
+  ```
 
-- Commit some change in the README.md file and push it to the repository.
-- This will trigger the workflow and you can download the generated PNG files from the artifacts section of the workflow.
-
-Congratulations! You have successfully automated the process of taking screenshots of your terminal output!
-note: The workflow doesn't run for `tricky.sh` file. If you can fix it, please create a pull request.
-
-## Contributing
-
-Feel free to contribute to this repository. You can create an issue or a pull request. I will be happy to review your changes.
-Currently Github Actions is not able to run the `tricky.sh` file. If you can fix it, please create a pull request.
+- _Please note:_ This project is work in progress. Although a lot of the ANSI sequences can be parsed, there are definitely commands in existence that create output that cannot be parsed correctly, yet. Also, commands that reset the cursor position are known to create issues.
