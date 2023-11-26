@@ -1,8 +1,8 @@
-# TermShot Automation
+# TermSnap
 
 Imagine taking multiple screenshots of your terminal output for your assignment. Sounds tedious, doesn't it? Well, it is.
 
-![Well, I am a firm believer of this thought!](https://images.app.goo.gl/A8SQcy74zNe6tRzP6 "Automation is the key to success!")
+![Well, I am a firm believer of this thought!](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBzUn1_rTjBXPDd6N3Y5gA7kCwor_RmVckEYvJbEb8g31XFMSfPstGXxX0eRONul-5jeU&usqp=CAU "Automation is the key to success!")
 
 I created this repository so that I didn't have to manually take screenshots of the terminal output for my Linux Commands assignment. I used [termshot](https://github.com/homeport/termshot) to capture the terminal output in the form of PNG files.
 
@@ -13,32 +13,32 @@ I created this repository so that I didn't have to manually take screenshots of 
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Examples](#examples)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Introduction
 
-TerminalShot Automation is designed to showcase the capabilities of termshot, a tool for capturing terminal output in the form of screenshots. The script executes a series of commands, including process termination commands, and uses termshot to visually represent the changes in the terminal.
+What it does is basically capturing terminal output in the form of screenshots. The scripts execute a series of commands, including process termination commands, and uses termshot to visually represent the changes in the terminal. The scripts are in 3 files namely:
+
+- `general.sh` : For general commands that require no human interaction.
+- `priviliged.sh`: For commands that require root privileges.
+- `tricky.sh`: Process creation and termination commands including `kill`, `killall` and `pkill`.
 
 ## Features
 
-- Demonstrates the use of various terminal commands.
-- Captures terminal output using termshot for documentation and visualization.
-- Simulates scenarios involving process termination.
+- If you don't have a Linux machine, you can just use the `termshot-actions` branch of this repository to run the script on GitHub Actions and download the generated PNG files.
+- Ez to use.
 
 ## Requirements
 
 - Bash
-- Termshot
-- Other dependencies as needed by the specific commands in the script
+- `termshot` : Download it from [here](https://github.com/homeport/termshot/releases/tag/v0.2.7)
 
 ## Installation
 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/termshot-automation.git
+   git clone https://github.com/shouryade/termshot-automation.git
    ```
 
 2. Navigate to the project directory:
@@ -47,12 +47,35 @@ TerminalShot Automation is designed to showcase the capabilities of termshot, a 
    cd termshot-automation
    ```
 
-3. Ensure that termshot is installed. You can find termshot installation instructions at [termshot GitHub repository](https://github.com/npat-efault/termshot).
+3. Ensure that `termshot` is installed. You can find termshot binaries to download for your machine at [termshot GitHub repository](https://github.com/homeport/termshot/releases/tag/v0.2.7).
 
 ## Usage
 
-Execute the script to run a series of commands and capture their output using termshot. Review the generated PNG files in the `tricky-output` directory to visually inspect the changes in the terminal.
+### Usage on your Linux machine
+
+Execute the scripts using the following commands:
 
 ```bash
-./termshot-automation.sh
+chmod +x general.sh
+./general.sh
+chmod +x priviliged.sh
+sudo ./priviliged.sh
+chmod +x tricky.sh
+./tricky.sh
 ```
+
+### Usage on GitHub Actions
+
+Fork this repository.  
+Change the branch to `termshot-actions` and follow the steps below:
+
+- Commit some change in the README.md file and push it to the repository.
+- This will trigger the workflow and you can download the generated PNG files from the artifacts section of the workflow.
+
+Congratulations! You have successfully automated the process of taking screenshots of your terminal output!
+note: The workflow doesn't run for `tricky.sh` file. If you can fix it, please create a pull request.
+
+## Contributing
+
+Feel free to contribute to this repository. You can create an issue or a pull request. I will be happy to review your changes.
+Currently Github Actions is not able to run the `tricky.sh` file. If you can fix it, please create a pull request.

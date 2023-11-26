@@ -2,7 +2,7 @@ name: "terminal-screenshots"
 on:
   push:
     branches:
-      - main
+      - termshot-actions
 
 permissions: write-all
 
